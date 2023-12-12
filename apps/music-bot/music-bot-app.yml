@@ -1,0 +1,36 @@
+
+services:
+  music-bot:
+    build:
+      context: ../..
+      target: music-bot-dev
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/home/node/app/apps/music-bot
+      - /home/node/app/apps/music-bot/node_modules
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - mongodb
+
+  redis:
+    image: redis:7.2.3-alpine
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    volumes:
+      - music-bot_redis:/data
+
+  mongodb:
+    image: mongo:7.0.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - music-bot_mongo:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: ${DATABASE_NAME}
+
+volumes:
+  music-bot_redis:
+  music-bot_mongo:

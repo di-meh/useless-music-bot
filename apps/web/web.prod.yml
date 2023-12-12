@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: ../..
+      target: web
+    env_file:
+      - .env.prod.local
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/home/node/web-dev
+      - /home/node/web-dev/node_modules
+    depends_on:
+      - music-bot

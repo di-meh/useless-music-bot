@@ -149,7 +149,7 @@ importers:
         version: 2.0.0
       music-bot:
         specifier: workspace:*
-        version: link:../music-bot
+        version: link:../..
       next:
         specifier: 14.0.2
         version: 14.0.2(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)

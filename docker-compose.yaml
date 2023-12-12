@@ -1,0 +1,3 @@
+include:
+  - path: apps/music-bot/music-bot-app.yml
+  - path: apps/web/web.yml
